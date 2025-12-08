@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(pnpm add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Complete Milestone 1 - Project Setup & Foundation\n\nImplemented comprehensive full-stack project structure for DELTA (Diff Explanation & Linguistic Transformation Assistant) - an intelligent GitLab MR summarizer powered by Azure OpenAI.\n\n## Backend (FastAPI + Python)\n- Created modular FastAPI application structure\n- Database layer with SQLAlchemy and async SQLite support\n- Database models: User (GitLab OAuth) and Scan (MR cache)\n- Pydantic schemas for type-safe API contracts\n- Configuration management with pydantic-settings\n- Environment-based configuration (.env.example)\n- Placeholder API routes for auth, analyze, and history endpoints\n- CORS middleware for frontend communication\n- Auto database initialization on startup\n\n## Frontend (React + Vite + TypeScript)\n- React 19 with TypeScript and Vite build system\n- TailwindCSS v4 for modern styling\n- shadcn/ui component library configured (New York style, Zinc theme)\n- React Router v7 for navigation\n- Axios-based API client with interceptors\n- TypeScript type definitions matching backend schemas\n- Placeholder pages: Login, Analysis, History\n- Sonner for toast notifications\n- Dark mode theme (zinc-950 background)\n\n## Project Infrastructure\n- Comprehensive READMEs for root, backend, and frontend\n- Environment configuration templates\n- Proper .gitignore for both frontend and backend\n- Clean modular folder structure\n- Path aliases configured (@/ imports)\n\n## Dependencies Installed\nBackend: FastAPI, SQLAlchemy, python-gitlab, Azure OpenAI SDK, JWT auth\nFrontend: React Router, Axios, Sonner, React Markdown, Lucide icons\n\n## Next Steps\nMilestone 2: Database initialization and testing\nMilestone 3: GitLab OAuth implementation\nMilestones 4-12: Core features and UI implementation\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(python -m venv:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(venv/Scripts/activate)",
+      "Bash(venv/Scripts/python:*)",
+      "Bash(./venv/Scripts/python.exe:*)",
+      "Bash(python test_database.py:*)",
+      "Bash(./venv/Scripts/pip.exe:*)",
+      "Bash(./venv/Scripts/sqlite3.exe:*)",
+      "Bash(git commit:*)",
+      "Bash(timeout 5 ./venv/Scripts/python.exe:*)",
+      "Bash(npm run build:*)",
+      "Bash(git restore:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
