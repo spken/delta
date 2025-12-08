@@ -15,12 +15,12 @@ async def lifespan(app: FastAPI):
     # Startup: Initialize database
     from app.core.database import init_db
     await init_db()
-    print("✓ Database initialized")
+    print("[OK] Database initialized")
 
     yield
 
     # Shutdown: Cleanup if needed
-    print("✓ Application shutdown")
+    print("[OK] Application shutdown")
 
 
 # Initialize FastAPI app
