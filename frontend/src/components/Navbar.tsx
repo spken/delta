@@ -23,15 +23,13 @@ export default function Navbar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur-sm">
+    <nav className="border-b border-zinc-800 bg-zinc-900">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-8">
-            <Link to="/analysis" className="text-xl font-bold">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                DELTA
-              </span>
+            <Link to="/analysis" className="text-xl font-bold text-white">
+              DELTA
             </Link>
 
             {/* Navigation links */}

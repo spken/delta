@@ -23,11 +23,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-950">
       <div className="text-center max-w-md px-6">
         {/* Logo and branding */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-3 text-white">
             DELTA
           </h1>
           <p className="text-gray-400 text-lg">
@@ -50,7 +50,7 @@ export default function LoginPage() {
         {/* Login button */}
         <button
           onClick={handleLogin}
-          className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:from-orange-500 hover:to-orange-400 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+          className="inline-flex items-center gap-3 px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
         >
           <GitlabIcon className="w-5 h-5" />
           <span>Connect with GitLab</span>

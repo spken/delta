@@ -178,10 +178,8 @@ export default function AnalysisPage() {
 
             {/* AI Summary Card */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  AI-Generated Summary
-                </span>
+              <h3 className="text-lg font-semibold mb-4 text-white">
+                AI-Generated Summary
               </h3>
 
               {/* Markdown content */}
