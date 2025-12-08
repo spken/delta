@@ -112,8 +112,8 @@ async def callback(
         max_age=60 * 60 * 24 * 7,  # 7 days
     )
 
-    # Redirect to frontend analysis page
-    frontend_url = "http://localhost:5173/analysis"
+    # Redirect to frontend callback page
+    frontend_url = "http://localhost:5173/callback"
     return RedirectResponse(url=frontend_url)
 
 

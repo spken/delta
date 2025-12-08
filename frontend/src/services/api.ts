@@ -1,7 +1,8 @@
 /**
  * API client for communicating with the FastAPI backend.
  */
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
+import type { AxiosInstance } from 'axios';
 import type {
   AnalyzeRequest,
   AnalyzeResponse,
@@ -47,6 +48,14 @@ class APIClient {
 
   async getCurrentUser(): Promise<UserProfile> {
     const response = await this.client.get<UserProfile>('/auth/me');
+    return response.data;
+  }
+
+  async getAuthStatus(): Promise<{
+    authenticated: boolean;
+    user: UserProfile | null;
+  }> {
+    const response = await this.client.get('/auth/status');
     return response.data;
   }
 
