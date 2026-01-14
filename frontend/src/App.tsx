@@ -2,7 +2,7 @@
  * Main App component with React Router setup and authentication.
  */
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'sonner';
+import { Toaster } from '@/components/ui/sonner';
 import { AuthProvider } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import LoginPage from '@/pages/LoginPage';
@@ -14,8 +14,8 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="min-h-screen bg-zinc-950 text-white">
-          <Toaster theme="dark" position="top-right" />
+        <div className="min-h-screen bg-background text-foreground">
+          <Toaster position="top-right" />
 
           <Routes>
             {/* Public routes */}
