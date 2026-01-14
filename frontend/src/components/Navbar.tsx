@@ -1,15 +1,15 @@
 /**
  * Navigation bar for authenticated pages.
- * Provides links to Analysis and History pages, and logout button.
+ * Displays app logo and user info with logout button.
  */
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { LogOut, FileSearch, History } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
-  const location = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -20,62 +20,22 @@ export default function Navbar() {
     }
   };
 
-  const isActive = (path: string) => location.pathname === path;
-
   return (
-    <nav className="border-b border-zinc-800 bg-zinc-900">
+    <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center gap-8">
-            <Link to="/analysis" className="text-xl font-bold text-white">
-              DELTA
-            </Link>
+        <div className="flex items-center justify-between h-14">
+          {/* Left: Logo only */}
+          <Link to="/analysis" className="text-xl font-bold text-zinc-900">
+            DELTA
+          </Link>
 
-            {/* Navigation links */}
-            <div className="flex gap-2">
-              <Link
-                to="/analysis"
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                  isActive('/analysis')
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-zinc-800'
-                }`}
-              >
-                <FileSearch className="w-4 h-4" />
-                <span>Analysis</span>
-              </Link>
-
-              <Link
-                to="/history"
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                  isActive('/history')
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-zinc-800'
-                }`}
-              >
-                <History className="w-4 h-4" />
-                <span>History</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* User info and logout */}
+          {/* Right: User + Logout */}
           <div className="flex items-center gap-4">
-            {user && (
-              <div className="text-sm text-gray-400">
-                <span className="text-gray-500">Logged in as</span>{' '}
-                <span className="text-white font-medium">{user.username}</span>
-              </div>
-            )}
-
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </button>
+            {user && <span className="text-sm text-zinc-500">{user.username}</span>}
+            <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
           </div>
         </div>
       </div>
