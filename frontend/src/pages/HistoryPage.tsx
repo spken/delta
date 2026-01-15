@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { apiClient } from '@/services/api';
-import { toast } from 'sonner';
+import { toast } from '@/components/ui/sonner';
 import { Search, ExternalLink, CheckCircle2, XCircle, Clock } from 'lucide-react';
 import type { ScanHistoryItem } from '@/types/api';
 

@@ -6,7 +6,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { toast } from 'sonner';
+import { toast } from '@/components/ui/sonner';
 
 export default function CallbackPage() {
   const { checkAuth } = useAuth();

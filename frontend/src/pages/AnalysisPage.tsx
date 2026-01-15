@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import TabNav from '@/components/TabNav';
 import { apiClient } from '@/services/api';
-import { toast } from 'sonner';
+import { toast } from '@/components/ui/sonner';
 import { Loader2, ExternalLink, CheckCircle2, Clock } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import type { AnalyzeResponse } from '@/types/api';

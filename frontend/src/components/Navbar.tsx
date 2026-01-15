@@ -5,7 +5,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { LogOut } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/components/ui/sonner';
 import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
