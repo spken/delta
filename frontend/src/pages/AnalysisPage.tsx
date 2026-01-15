@@ -55,9 +55,10 @@ export default function AnalysisPage() {
       } else {
         toast.success('Summary generated successfully!');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const axiosError = err as { response?: { data?: { detail?: string } } };
       const errorMessage =
-        err.response?.data?.detail || 'Failed to analyze merge request';
+        axiosError.response?.data?.detail || 'Failed to analyze merge request';
       setError(errorMessage);
       toast.error(errorMessage);
     } finally {

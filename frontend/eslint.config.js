@@ -20,4 +20,11 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  // Allow exporting non-components from UI library files and contexts
+  {
+    files: ['**/components/ui/**/*.{ts,tsx}', '**/contexts/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

@@ -2,7 +2,7 @@
  * History page - View past MR scans with search and pagination.
  * Displays all previously analyzed merge requests.
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '@/components/Navbar';
 import TabNav from '@/components/TabNav';
 import { Card, CardContent } from '@/components/ui/card';
@@ -24,11 +24,7 @@ export default function HistoryPage() {
   const [currentOffset, setCurrentOffset] = useState(0);
   const [hasMore, setHasMore] = useState(false);
 
-  useEffect(() => {
-    fetchHistory();
-  }, [searchQuery, currentOffset]);
-
-  const fetchHistory = async () => {
+  const fetchHistory = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await apiClient.getHistory({
@@ -40,13 +36,17 @@ export default function HistoryPage() {
       setScans(response.scans);
       setTotalCount(response.total);
       setHasMore(currentOffset + currentLimit < response.total);
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Failed to load history');
       console.error('Failed to fetch history:', error);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [searchQuery, currentLimit, currentOffset]);
+
+  useEffect(() => {
+    fetchHistory();
+  }, [fetchHistory]);
 
   const handleSearch = (value: string) => {
     setSearchQuery(value);
