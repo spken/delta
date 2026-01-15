@@ -4,9 +4,15 @@
  */
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import TabNav from '@/components/TabNav';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { apiClient } from '@/services/api';
 import { toast } from 'sonner';
-import { Search, Loader2, ExternalLink, CheckCircle2, XCircle, Clock } from 'lucide-react';
+import { Search, ExternalLink, CheckCircle2, XCircle, Clock } from 'lucide-react';
 import type { ScanHistoryItem } from '@/types/api';
 
 export default function HistoryPage() {
@@ -77,10 +83,15 @@ export default function HistoryPage() {
     <>
       <Navbar />
       <div className="container mx-auto p-8 max-w-6xl">
+        {/* Tab Navigation */}
+        <div className="mb-8">
+          <TabNav />
+        </div>
+
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Scan History</h1>
-          <p className="text-gray-400">
+          <h1 className="text-3xl font-bold mb-2 text-zinc-900">Scan History</h1>
+          <p className="text-zinc-500">
             View and re-analyze previously scanned merge requests
           </p>
         </div>
@@ -88,19 +99,19 @@ export default function HistoryPage() {
         {/* Search Bar */}
         <div className="mb-6">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-            <input
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
+            <Input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search by MR title or URL..."
-              className="w-full pl-11 pr-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="pl-11"
             />
           </div>
 
           {/* Result count */}
           {!isLoading && (
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm text-zinc-400 mt-2">
               {totalCount === 0
                 ? 'No scans found'
                 : totalCount === 1
@@ -112,27 +123,34 @@ export default function HistoryPage() {
 
         {/* Loading State */}
         {isLoading && scans.length === 0 && (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-blue-500" />
-              <p className="text-gray-400">Loading scan history...</p>
-            </div>
+          <div className="space-y-4">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <Skeleton className="h-6 w-3/4 mb-3" />
+                  <Skeleton className="h-4 w-1/2 mb-2" />
+                  <Skeleton className="h-4 w-full" />
+                </CardContent>
+              </Card>
+            ))}
           </div>
         )}
 
         {/* Empty State */}
         {!isLoading && scans.length === 0 && (
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-12 text-center">
-            <div className="mb-4">
-              <Clock className="w-16 h-16 mx-auto text-gray-600" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">No Scans Yet</h3>
-            <p className="text-gray-400 mb-4">
-              {searchQuery
-                ? 'No scans match your search query'
-                : 'Start by analyzing a merge request on the Analysis tab'}
-            </p>
-          </div>
+          <Card className="p-12 text-center">
+            <CardContent className="p-0">
+              <div className="mb-4">
+                <Clock className="w-16 h-16 mx-auto text-zinc-300" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-zinc-900">No Scans Yet</h3>
+              <p className="text-zinc-500">
+                {searchQuery
+                  ? 'No scans match your search query'
+                  : 'Start by analyzing a merge request on the Analysis tab'}
+              </p>
+            </CardContent>
+          </Card>
         )}
 
         {/* Scan Cards */}
@@ -145,76 +163,80 @@ export default function HistoryPage() {
                   href={scan.mr_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-zinc-900 border border-zinc-800 rounded-lg p-6 hover:border-zinc-700 hover:bg-zinc-800/50 transition-all group"
+                  className="block"
                 >
-                  <div className="flex items-start justify-between">
-                    {/* Left side: Content */}
-                    <div className="flex-1 min-w-0 pr-4">
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors truncate">
-                        {scan.title}
-                      </h3>
+                  <Card className="p-0 hover:border-zinc-300 hover:shadow-md transition-all group">
+                    <CardContent className="p-6">
+                      <div className="flex items-start justify-between">
+                        {/* Left side: Content */}
+                        <div className="flex-1 min-w-0 pr-4">
+                          <h3 className="text-lg font-semibold mb-2 text-zinc-900 group-hover:text-blue-600 transition-colors truncate">
+                            {scan.title}
+                          </h3>
 
-                      <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                        <span>MR !{scan.mr_iid}</span>
-                        <span className="text-gray-600">•</span>
-                        <span>{formatDate(scan.scanned_at)}</span>
-                      </div>
+                          <div className="flex items-center gap-4 text-sm text-zinc-400 mb-3">
+                            <span>MR !{scan.mr_iid}</span>
+                            <span className="text-zinc-300">&#8226;</span>
+                            <span>{formatDate(scan.scanned_at)}</span>
+                          </div>
 
-                      <p className="text-sm text-gray-500 truncate">
-                        {scan.mr_url}
-                      </p>
-                    </div>
+                          <p className="text-sm text-zinc-500 truncate">
+                            {scan.mr_url}
+                          </p>
+                        </div>
 
-                    {/* Right side: Status and Icon */}
-                    <div className="flex items-center gap-3 flex-shrink-0">
-                      <div className="flex items-center gap-2">
-                        {scan.is_up_to_date ? (
-                          <>
-                            <CheckCircle2 className="w-4 h-4 text-green-400" />
-                            <span className="text-sm text-green-400">
+                        {/* Right side: Status and Icon */}
+                        <div className="flex items-center gap-3 flex-shrink-0">
+                          {scan.is_up_to_date ? (
+                            <Badge
+                              variant="outline"
+                              className="border-green-600 text-green-600 bg-green-50"
+                            >
+                              <CheckCircle2 className="w-3 h-3" />
                               Up to date
-                            </span>
-                          </>
-                        ) : (
-                          <>
-                            <XCircle className="w-4 h-4 text-orange-400" />
-                            <span className="text-sm text-orange-400">
+                            </Badge>
+                          ) : (
+                            <Badge
+                              variant="outline"
+                              className="border-orange-600 text-orange-600 bg-orange-50"
+                            >
+                              <XCircle className="w-3 h-3" />
                               Outdated
-                            </span>
-                          </>
-                        )}
-                      </div>
+                            </Badge>
+                          )}
 
-                      <ExternalLink className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" />
-                    </div>
-                  </div>
+                          <ExternalLink className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </a>
               ))}
             </div>
 
             {/* Pagination Controls */}
             <div className="mt-8 flex items-center justify-between">
-              <button
+              <Button
+                variant="outline"
                 onClick={handleLoadPrevious}
                 disabled={currentOffset === 0}
-                className="px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 Previous
-              </button>
+              </Button>
 
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-zinc-400">
                 Showing {currentOffset + 1} -{' '}
                 {Math.min(currentOffset + currentLimit, totalCount)} of{' '}
                 {totalCount}
               </span>
 
-              <button
+              <Button
+                variant="outline"
                 onClick={handleLoadMore}
                 disabled={!hasMore}
-                className="px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 Next
-              </button>
+              </Button>
             </div>
           </>
         )}
