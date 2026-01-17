@@ -63,22 +63,29 @@ graph TB
 
 ## Component Architecture
 
+### Frontend Components
+
 ```mermaid
 graph TD
-    subgraph "Frontend Components"
-        A[App.tsx] --> B[Router]
-        B --> C[LoginPage]
-        B --> D[ProtectedRoute]
-        D --> E[AnalysisPage]
-        D --> F[HistoryPage]
-        E --> G[Navbar]
-        E --> H[AnalysisForm]
-        E --> I[ResultsDisplay]
-        F --> G
-        F --> J[SearchBar]
-        F --> K[ScanCard]
-    end
+    A[App.tsx] --> B[Router]
+    B --> C[LoginPage]
+    B --> D[ProtectedRoute]
+    D --> E[AnalysisPage]
+    D --> F[HistoryPage]
+    E --> G[Navbar]
+    E --> H[AnalysisForm]
+    E --> I[ResultsDisplay]
+    F --> G
+    F --> J[SearchBar]
+    F --> K[ScanCard]
 
+    style A fill:#61dafb,color:#000
+```
+
+### Backend Components
+
+```mermaid
+graph TD
     subgraph "Backend Routes"
         L[main.py] --> M[auth routes]
         L --> N[analyze routes]
@@ -102,7 +109,6 @@ graph TD
         V --> W
     end
 
-    style A fill:#61dafb,color:#000
     style L fill:#009688,color:#fff
 ```
 
@@ -147,28 +153,36 @@ sequenceDiagram
 
 ## Security Architecture
 
+### Security Layers
+
 ```mermaid
 graph TD
-    subgraph "Security Layers"
-        A[Browser] -->|HTTPS| B[CORS Middleware]
-        B -->|Origin Check| C[Authentication]
-        C -->|JWT Verify| D[Authorization]
-        D -->|Permission Check| E[Business Logic]
-    end
-
-    subgraph "Token Flow"
-        F[OAuth State] --> G[CSRF Protection]
-        H[Access Token] --> I[HTTP-only Cookie]
-        J[GitLab Token] --> K[Database Encrypted]
-    end
-
-    subgraph "Input Validation"
-        L[URL Input] --> M[Pydantic Schema]
-        M --> N[GitLab API Call]
-    end
+    A[Browser] -->|HTTPS| B[CORS Middleware]
+    B -->|Origin Check| C[Authentication]
+    C -->|JWT Verify| D[Authorization]
+    D -->|Permission Check| E[Business Logic]
 
     style C fill:#22c55e,color:#000
+```
+
+### Token Flow
+
+```mermaid
+graph TD
+    F[OAuth State] --> G[CSRF Protection]
+    H[Access Token] --> I[HTTP-only Cookie]
+    J[GitLab Token] --> K[Database Encrypted]
+
     style G fill:#22c55e,color:#000
+```
+
+### Input Validation
+
+```mermaid
+graph TD
+    L[URL Input] --> M[Pydantic Schema]
+    M --> N[GitLab API Call]
+
     style M fill:#22c55e,color:#000
 ```
 
