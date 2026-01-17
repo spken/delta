@@ -210,7 +210,7 @@ graph LR
     D --> J{Can handle<br/>large MRs?}
     J -->|Map-Reduce| I
 
-    E --> K{Dark mode?}
+    E --> K{Light theme?}
     E --> L{Loading states?}
     K -->|Yes| I
     L -->|Skeleton UI| I

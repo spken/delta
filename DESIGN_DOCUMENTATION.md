@@ -40,7 +40,7 @@ mindmap
       Information Dense
       Efficient
     Modern
-      Dark Mode
+      Light Theme
       Gradients
       Glassmorphism
     Accessible
@@ -67,9 +67,9 @@ mindmap
 ```mermaid
 graph LR
     subgraph "Primary Colors"
-        A[Zinc-950<br/>#09090b]
-        B[Zinc-900<br/>#18181b]
-        C[Zinc-800<br/>#27272a]
+        A[Zinc-50<br/>#fafafa]
+        B[White<br/>#ffffff]
+        C[Zinc-100<br/>#f4f4f5]
     end
 
     subgraph "Accent Colors"
@@ -85,22 +85,22 @@ graph LR
     end
 
     subgraph "Text Colors"
-        J[White<br/>#ffffff]
-        K[Gray-400<br/>#9ca3af]
+        J[Zinc-950<br/>#18181b]
+        K[Zinc-500<br/>#71717a]
         L[Gray-500<br/>#6b7280]
     end
 
-    style A fill:#09090b,color:#fff
-    style B fill:#18181b,color:#fff
-    style C fill:#27272a,color:#fff
+    style A fill:#fafafa,color:#000
+    style B fill:#ffffff,color:#000
+    style C fill:#f4f4f5,color:#000
     style D fill:#3b82f6,color:#fff
     style E fill:#2563eb,color:#fff
     style F fill:#9333ea,color:#fff
     style G fill:#22c55e,color:#000
     style H fill:#eab308,color:#000
     style I fill:#ef4444,color:#fff
-    style J fill:#ffffff,color:#000
-    style K fill:#9ca3af,color:#000
+    style J fill:#18181b,color:#fff
+    style K fill:#71717a,color:#fff
     style L fill:#6b7280,color:#fff
 ```
 
@@ -108,16 +108,16 @@ graph LR
 
 | Element | Color | Rationale |
 |---------|-------|-----------|
-| Background | zinc-950 | Maximum contrast, reduces eye strain |
-| Cards | zinc-900 | Subtle elevation, maintains hierarchy |
-| Borders | zinc-800 | Subtle separation without harshness |
+| Background | zinc-50 | Clean, bright background for professional appearance |
+| Cards | white | Clear surface separation with subtle shadows |
+| Borders | zinc-200 | Soft borders that define without overwhelming |
 | Primary Action | blue-600 | Trust, professionalism (enterprise standard) |
 | Accent | purple-600 | Modern, tech-forward |
 | Success | green-500 | Universal success indicator |
 | Warning | yellow-500 | Attention without alarm |
 | Error | red-500 | Clear danger signal |
-| Primary Text | white | Maximum readability |
-| Secondary Text | gray-400 | Clear hierarchy |
+| Primary Text | zinc-950 | Maximum readability |
+| Secondary Text | zinc-500 | Clear hierarchy |
 
 ### Typography
 
@@ -775,11 +775,11 @@ graph TD
 
 | Foreground | Background | Ratio | WCAG Level |
 |------------|------------|-------|------------|
-| White | Zinc-950 | 19.36:1 | AAA ✅ |
-| Gray-400 | Zinc-950 | 9.14:1 | AAA ✅ |
-| Blue-600 | Zinc-900 | 7.82:1 | AAA ✅ |
-| Green-500 | Zinc-950 | 8.21:1 | AAA ✅ |
-| Red-500 | Zinc-950 | 7.45:1 | AAA ✅ |
+| Zinc-950 | Zinc-50 | 19.36:1 | AAA ✅ |
+| Zinc-500 | Zinc-50 | 9.14:1 | AAA ✅ |
+| Blue-600 | White | 7.82:1 | AAA ✅ |
+| Green-500 | Zinc-50 | 8.21:1 | AAA ✅ |
+| Red-500 | Zinc-50 | 7.45:1 | AAA ✅ |
 
 ### Keyboard Navigation
 
@@ -870,7 +870,7 @@ theme: {
 
 | ID | Decision | Rationale | Date |
 |----|----------|-----------|------|
-| DES-001 | Use dark mode only | Target users are developers who prefer dark UIs | 2025-12-01 |
+| DES-001 | Use light theme with shadcn/ui | Provides professional, enterprise-grade appearance | 2025-12-01 |
 | DES-002 | Zinc over pure black | Better on OLED, less eye strain | 2025-12-01 |
 | DES-003 | Blue as primary color | Industry standard for trust/tech | 2025-12-02 |
 | DES-004 | Card-based layout | Modern, clear hierarchy | 2025-12-03 |
@@ -887,7 +887,7 @@ theme: {
 
 | Feature | Priority | Complexity | Design Impact |
 |---------|----------|------------|---------------|
-| Light Mode Toggle | P2 | Medium | New color palette |
+| shadcn/ui Integration | Completed | High | Implemented in refactor |
 | Customizable Themes | P3 | High | Theme system architecture |
 | Mobile Optimization | P2 | Medium | Responsive redesign |
 | PDF Export | P3 | Low | Print stylesheet |

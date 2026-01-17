@@ -317,7 +317,7 @@ graph LR
 
 ```mermaid
 graph TD
-    A[M10 Start] --> B[Dark Mode Refinement<br/>1h]
+    A[M10 Start] --> B[Light Theme with shadcn/ui<br/>1h]
     B --> C[Animations<br/>1.5h]
     C --> D[Toast Notifications<br/>1h]
     D --> E[Responsive Design<br/>1.5h]

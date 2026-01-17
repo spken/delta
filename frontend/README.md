@@ -25,7 +25,7 @@ React frontend for DELTA (Diff Explanation & Linguistic Transformation Assistant
 - Relative timestamps
 
 ### UI/UX
-- Dark mode with zinc color palette
+- Light theme with zinc color palette
 - Professional gradient branding
 - Toast notifications
 - Loading states with animations
@@ -156,9 +156,9 @@ Routes are defined in `App.tsx`:
 
 ### Color Palette
 
-- Background: `bg-zinc-950`, `bg-zinc-900`
-- Borders: `border-zinc-800`, `border-zinc-700`
-- Text: `text-white`, `text-gray-400`
+- Background: `bg-zinc-50`, `bg-white`
+- Borders: `border-zinc-200`, `border-zinc-300`
+- Text: `text-zinc-950`, `text-zinc-500`
 - Accent: `text-blue-400`, `bg-blue-600`
 - Success: `text-green-400`
 - Error: `text-red-400`

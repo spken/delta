@@ -598,7 +598,7 @@ gantt
 | Multi-user support | IPA scope is single-user | P2 post-IPA |
 | Real-time MR monitoring | Not requested by stakeholders | P3 |
 | PDF export | Nice-to-have, not critical | P3 |
-| Dark/Light mode toggle | Dark mode sufficient | P2 |
+| Light theme implementation | Implemented with shadcn/ui | Completed |
 | Mobile app | Desktop-first design | P4 |
 | Custom AI prompts | Predefined prompt works well | P3 |
 

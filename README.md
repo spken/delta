@@ -9,7 +9,7 @@ DELTA is a full-stack application that:
 - Fetches MR metadata, discussions, and diffs
 - Generates AI-powered summaries using Azure OpenAI
 - Caches results to avoid re-processing unchanged MRs
-- Provides a sleek, dark-mode UI for analysis and history tracking
+- Provides a sleek, modern UI with light theme for analysis and history tracking
 
 ## Tech Stack
 
@@ -124,7 +124,7 @@ All 12 milestones have been completed:
 7. ✅ **Auth UI** - OAuth flow frontend
 8. ✅ **Analysis Tab** - MR input & results display
 9. ✅ **History Tab** - List & search interface
-10. ✅ **UI/UX Polish** - Dark mode, toasts, animations
+10. ✅ **UI/UX Polish** - Light theme with shadcn/ui, toasts
 11. ✅ **Integration & Testing** - E2E testing
 12. ✅ **Documentation** - Deployment guides
 
@@ -133,7 +133,7 @@ All 12 milestones have been completed:
 - **Smart Caching**: SHA-based cache invalidation prevents unnecessary re-processing
 - **Intelligent Chunking**: Map-reduce strategy for large diffs that exceed token limits
 - **Security**: HTTPOnly cookies, OAuth 2.0, encrypted tokens
-- **Modern UI**: Dark mode, skeleton loaders, toast notifications
+- **Modern UI**: Light theme with shadcn/ui, skeleton loaders, toast notifications
 - **Performance**: Sub-second metadata fetch, <15s AI generation
 
 ## Testing

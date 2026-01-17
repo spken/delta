@@ -46,8 +46,8 @@ A local, browser-based tool that leverages Azure OpenAI (GPT-4) to generate inte
 * **Search/Filter:** Simple text search to find past MRs by title.
 
 **UX/UI Details:**
-* **Theme:** Dark mode by default (slate/zinc palette).
-* **Feedback:** Toast notifications for errors (e.g., "MR not found", "Token expired").
+* **Theme:** Light theme with zinc color palette.
+* **Feedback:** Toast notifications with Sonner for errors (e.g., "MR not found", "Token expired").
 
 ### 3.2 Backend (FastAPI + Python + SQLite)
 
