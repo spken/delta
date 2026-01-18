@@ -3,10 +3,10 @@
  * The backend handles the actual OAuth flow and redirects here after authentication.
  * This page re-checks auth status and redirects to the analysis page.
  */
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
-import { toast } from '@/components/ui/sonner';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "@/components/ui/sonner";
 
 export default function CallbackPage() {
   const { checkAuth } = useAuth();
@@ -22,14 +22,14 @@ export default function CallbackPage() {
         await checkAuth();
 
         // Show success message
-        toast.success('Successfully logged in!');
+        toast.success("Successfully logged in!");
 
         // Redirect to analysis page
-        navigate('/analysis', { replace: true });
+        navigate("/analysis", { replace: true });
       } catch (error) {
-        console.error('OAuth callback error:', error);
-        toast.error('Authentication failed. Please try again.');
-        navigate('/login', { replace: true });
+        console.error("OAuth callback error:", error);
+        toast.error("Authentication failed. Please try again.");
+        navigate("/login", { replace: true });
       }
     };
 

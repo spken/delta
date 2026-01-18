@@ -2,8 +2,8 @@
  * Shared tab navigation component for page navigation.
  * Uses React Router for URL-based navigation between Analysis and History pages.
  */
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface TabConfig {
   value: string;
@@ -12,8 +12,8 @@ interface TabConfig {
 }
 
 const tabs: TabConfig[] = [
-  { value: 'analysis', label: 'Analysis', path: '/analysis' },
-  { value: 'history', label: 'History', path: '/history' },
+  { value: "analysis", label: "Analysis", path: "/analysis" },
+  { value: "history", label: "History", path: "/history" },
 ];
 
 export default function TabNav() {
@@ -24,7 +24,7 @@ export default function TabNav() {
   const getActiveTab = (): string => {
     const currentPath = location.pathname;
     const activeTab = tabs.find((tab) => currentPath === tab.path);
-    return activeTab?.value ?? 'analysis';
+    return activeTab?.value ?? "analysis";
   };
 
   const handleTabChange = (value: string) => {

@@ -2,8 +2,8 @@
  * Protected route wrapper that requires authentication.
  * Redirects to login page if not authenticated.
  */
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { Navigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

@@ -2,23 +2,29 @@
  * History page - View past MR scans with search and pagination.
  * Displays all previously analyzed merge requests.
  */
-import { useState, useEffect, useCallback } from 'react';
-import Navbar from '@/components/Navbar';
-import TabNav from '@/components/TabNav';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { apiClient } from '@/services/api';
-import { toast } from '@/components/ui/sonner';
-import { Search, ExternalLink, CheckCircle2, XCircle, Clock } from 'lucide-react';
-import type { ScanHistoryItem } from '@/types/api';
+import { useState, useEffect, useCallback } from "react";
+import Navbar from "@/components/Navbar";
+import TabNav from "@/components/TabNav";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { apiClient } from "@/services/api";
+import { toast } from "@/components/ui/sonner";
+import {
+  Search,
+  ExternalLink,
+  CheckCircle2,
+  XCircle,
+  Clock,
+} from "lucide-react";
+import type { ScanHistoryItem } from "@/types/api";
 
 export default function HistoryPage() {
   const [scans, setScans] = useState<ScanHistoryItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [currentLimit] = useState(20);
   const [currentOffset, setCurrentOffset] = useState(0);
@@ -37,8 +43,8 @@ export default function HistoryPage() {
       setTotalCount(response.total);
       setHasMore(currentOffset + currentLimit < response.total);
     } catch (error: unknown) {
-      toast.error('Failed to load history');
-      console.error('Failed to fetch history:', error);
+      toast.error("Failed to load history");
+      console.error("Failed to fetch history:", error);
     } finally {
       setIsLoading(false);
     }
@@ -65,15 +71,15 @@ export default function HistoryPage() {
     const date = new Date(dateString);
     const now = new Date();
     const diffInHours = Math.floor(
-      (now.getTime() - date.getTime()) / (1000 * 60 * 60)
+      (now.getTime() - date.getTime()) / (1000 * 60 * 60),
     );
 
     if (diffInHours < 1) {
-      return 'Just now';
+      return "Just now";
     } else if (diffInHours < 24) {
       return `${diffInHours}h ago`;
     } else if (diffInHours < 48) {
-      return 'Yesterday';
+      return "Yesterday";
     } else {
       return date.toLocaleDateString();
     }
@@ -90,7 +96,9 @@ export default function HistoryPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 text-zinc-900">Scan History</h1>
+          <h1 className="text-3xl font-bold mb-2 text-zinc-900">
+            Scan History
+          </h1>
           <p className="text-zinc-500">
             View and re-analyze previously scanned merge requests
           </p>
@@ -113,10 +121,10 @@ export default function HistoryPage() {
           {!isLoading && (
             <p className="text-sm text-zinc-400 mt-2">
               {totalCount === 0
-                ? 'No scans found'
+                ? "No scans found"
                 : totalCount === 1
-                ? '1 scan found'
-                : `${totalCount} scans found`}
+                  ? "1 scan found"
+                  : `${totalCount} scans found`}
             </p>
           )}
         </div>
@@ -143,11 +151,13 @@ export default function HistoryPage() {
               <div className="mb-4">
                 <Clock className="w-16 h-16 mx-auto text-zinc-300" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-zinc-900">No Scans Yet</h3>
+              <h3 className="text-xl font-semibold mb-2 text-zinc-900">
+                No Scans Yet
+              </h3>
               <p className="text-zinc-500">
                 {searchQuery
-                  ? 'No scans match your search query'
-                  : 'Start by analyzing a merge request on the Analysis tab'}
+                  ? "No scans match your search query"
+                  : "Start by analyzing a merge request on the Analysis tab"}
               </p>
             </CardContent>
           </Card>
@@ -225,8 +235,8 @@ export default function HistoryPage() {
               </Button>
 
               <span className="text-sm text-zinc-400">
-                Showing {currentOffset + 1} -{' '}
-                {Math.min(currentOffset + currentLimit, totalCount)} of{' '}
+                Showing {currentOffset + 1} -{" "}
+                {Math.min(currentOffset + currentLimit, totalCount)} of{" "}
                 {totalCount}
               </span>
 

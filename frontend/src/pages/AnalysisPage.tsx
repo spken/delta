@@ -2,29 +2,29 @@
  * Analysis page - Main MR analysis interface.
  * Allows users to input MR URL and get AI-generated summaries.
  */
-import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import TabNav from '@/components/TabNav';
-import { apiClient } from '@/services/api';
-import { toast } from '@/components/ui/sonner';
-import { Loader2, ExternalLink, CheckCircle2, Clock } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import type { AnalyzeResponse } from '@/types/api';
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import TabNav from "@/components/TabNav";
+import { apiClient } from "@/services/api";
+import { toast } from "@/components/ui/sonner";
+import { Loader2, ExternalLink, CheckCircle2, Clock } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import type { AnalyzeResponse } from "@/types/api";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AnalysisPage() {
-  const [mrUrl, setMrUrl] = useState('');
+  const [mrUrl, setMrUrl] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<AnalyzeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -32,13 +32,13 @@ export default function AnalysisPage() {
   const handleAnalyze = async () => {
     // Validate URL
     if (!mrUrl.trim()) {
-      toast.error('Please enter a GitLab MR URL');
+      toast.error("Please enter a GitLab MR URL");
       return;
     }
 
     // Basic URL validation
-    if (!mrUrl.includes('merge_requests') && !mrUrl.includes('merge_request')) {
-      toast.error('Please enter a valid GitLab merge request URL');
+    if (!mrUrl.includes("merge_requests") && !mrUrl.includes("merge_request")) {
+      toast.error("Please enter a valid GitLab merge request URL");
       return;
     }
 
@@ -51,14 +51,14 @@ export default function AnalysisPage() {
       setResult(response);
 
       if (response.cached) {
-        toast.success('Summary loaded from cache (instant!)');
+        toast.success("Summary loaded from cache (instant!)");
       } else {
-        toast.success('Summary generated successfully!');
+        toast.success("Summary generated successfully!");
       }
     } catch (err: unknown) {
       const axiosError = err as { response?: { data?: { detail?: string } } };
       const errorMessage =
-        axiosError.response?.data?.detail || 'Failed to analyze merge request';
+        axiosError.response?.data?.detail || "Failed to analyze merge request";
       setError(errorMessage);
       toast.error(errorMessage);
     } finally {
@@ -67,7 +67,7 @@ export default function AnalysisPage() {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !isAnalyzing) {
+    if (e.key === "Enter" && !isAnalyzing) {
       handleAnalyze();
     }
   };
@@ -114,7 +114,8 @@ export default function AnalysisPage() {
             </div>
             {/* Helpful hint */}
             <p className="text-sm text-zinc-500 mt-2">
-              Press Enter to analyze - Results are cached for instant re-analysis
+              Press Enter to analyze - Results are cached for instant
+              re-analysis
             </p>
           </CardContent>
         </Card>
@@ -153,7 +154,7 @@ export default function AnalysisPage() {
                     </h2>
                     <div className="flex items-center gap-4 text-sm text-zinc-500">
                       <span>
-                        <span className="text-zinc-400">Author:</span>{' '}
+                        <span className="text-zinc-400">Author:</span>{" "}
                         {result.mr_header.author}
                       </span>
                       <Badge

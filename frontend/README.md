@@ -5,12 +5,14 @@ React frontend for DELTA (Diff Explanation & Linguistic Transformation Assistant
 ## Features
 
 ### Authentication
+
 - GitLab OAuth 2.0 integration
 - Protected routes with automatic redirects
 - Session management with HTTP-only cookies
 - User profile display in navbar
 
 ### Analysis Page
+
 - GitLab MR URL input with validation
 - Real-time AI-generated summaries
 - Cache indicators (instant for cached results)
@@ -18,6 +20,7 @@ React frontend for DELTA (Diff Explanation & Linguistic Transformation Assistant
 - MR header display with external links
 
 ### History Page
+
 - View all previously analyzed MRs
 - Real-time search by title or URL
 - Pagination controls (20 per page)
@@ -25,6 +28,7 @@ React frontend for DELTA (Diff Explanation & Linguistic Transformation Assistant
 - Relative timestamps
 
 ### UI/UX
+
 - Light theme with zinc color palette
 - Professional gradient branding
 - Toast notifications
@@ -46,6 +50,7 @@ React frontend for DELTA (Diff Explanation & Linguistic Transformation Assistant
 ## Setup
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 - Backend server running on `http://localhost:8000`
 
@@ -114,7 +119,7 @@ frontend/
 The frontend communicates with the backend via the `apiClient` singleton:
 
 ```typescript
-import { apiClient } from '@/services/api';
+import { apiClient } from "@/services/api";
 
 // Login (redirects to backend OAuth)
 apiClient.login();
@@ -127,7 +132,7 @@ const result = await apiClient.analyzeMR({ url: mrUrl });
 
 // Get history
 const { scans, total } = await apiClient.getHistory({
-  search: 'search term',
+  search: "search term",
   limit: 20,
   offset: 0,
 });
@@ -139,6 +144,7 @@ await apiClient.logout();
 ## Routing
 
 Routes are defined in `App.tsx`:
+
 - `/` - Redirects to `/login`
 - `/login` - Login page (public)
 - `/callback` - OAuth callback (public)

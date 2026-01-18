@@ -2,15 +2,10 @@
  * Authentication context for managing user session state.
  * Provides authentication status and user profile throughout the app.
  */
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
-import type { ReactNode } from 'react';
-import { apiClient } from '@/services/api';
-import type { UserProfile } from '@/types/api';
+import { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
+import { apiClient } from "@/services/api";
+import type { UserProfile } from "@/types/api";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -46,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(null);
       }
     } catch (error) {
-      console.error('Auth check failed:', error);
+      console.error("Auth check failed:", error);
       setIsAuthenticated(false);
       setUser(null);
     } finally {
@@ -65,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsAuthenticated(false);
       setUser(null);
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error("Logout failed:", error);
     }
   };
 
@@ -88,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }

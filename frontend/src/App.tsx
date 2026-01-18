@@ -1,14 +1,14 @@
 /**
  * Main App component with React Router setup and authentication.
  */
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from '@/components/ui/sonner';
-import { AuthProvider } from '@/contexts/AuthContext';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import LoginPage from '@/pages/LoginPage';
-import CallbackPage from '@/pages/CallbackPage';
-import AnalysisPage from '@/pages/AnalysisPage';
-import HistoryPage from '@/pages/HistoryPage';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import LoginPage from "@/pages/LoginPage";
+import CallbackPage from "@/pages/CallbackPage";
+import AnalysisPage from "@/pages/AnalysisPage";
+import HistoryPage from "@/pages/HistoryPage";
 
 function App() {
   return (
